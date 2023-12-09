@@ -4,7 +4,7 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 
-console.log(document.getElementById("modal").style.visibility = "hidden")
+document.getElementById("modal").classList.add("hidden")
 const heartButtons = document.getElementsByClassName("like-glyph")
 
 for(let i = 0; i < heartButtons.length; i++){
@@ -28,10 +28,10 @@ for(let i = 0; i < heartButtons.length; i++){
       }
     })
     .catch(() => {
-      document.getElementById("modal").style.visibility = "visible"
+      document.getElementById("modal").classList.remove("hidden")
       document.getElementById("modal-message").textContent = "Random Server Error. Try again."
       setTimeout(() => {
-        document.getElementById("modal").style.visibility = "hidden";
+        document.getElementById("modal").classList.add("hidden");
       }, "3000");
       
     })
