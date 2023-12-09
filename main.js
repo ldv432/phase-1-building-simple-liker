@@ -4,6 +4,39 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 
+console.log(document.getElementById("modal").style.visibility = "hidden")
+const heartButtons = document.getElementsByClassName("like-glyph")
+
+for(let i = 0; i < heartButtons.length; i++){
+  let heartButton = heartButtons[i]
+  heartButton.addEventListener("click", clickHeart)
+  function clickHeart(){
+    mimicServerCall()
+    .then(() => {
+      if (heartButton.textContent ==  FULL_HEART) {
+        heartButton.textContent = EMPTY_HEART
+      } else {
+        heartButton.textContent = FULL_HEART
+      }
+      if (heartButton.textContent == FULL_HEART){
+      }
+      if(heartButton.textContent == FULL_HEART){
+        heartButton.classList.add('activated-heart')
+      }
+      if(heartButton.textContent == EMPTY_HEART){
+        heartButton.classList.remove('activated-heart')
+      }
+    })
+    .catch(() => {
+      document.getElementById("modal").style.visibility = "visible"
+      document.getElementById("modal-message").textContent = "Random Server Error. Try again."
+      setTimeout(() => {
+        document.getElementById("modal").style.visibility = "hidden";
+      }, "3000");
+      
+    })
+  }
+}
 
 
 
